@@ -1,18 +1,25 @@
 #include <stdio.h>
 /**
  * main - Entry point
- * Description: Prints the alphabet
+ * Description: Will print all possible combinations of
+ * single-digit numbers.
  * Return: 0
  */
 int main(void)
 {
-	int l = 97;
+	int d = 48;
 
-	while (l <= 122)
+	while (d <= 57)
 	{
-		putchar(l);
-		l++;
+		putchar(d);
+		if (d < 57)
+		{
+			putchar(44);
+			putchar(32);
+		}
+		else
+			putchar(36);
+		d++;
 	}
-	putchar('\n');
 	return (0);
 }
