@@ -1,0 +1,7 @@
+#include "main.h"
+/**
+ * _islower - check whether a character
+ * is lower or upper
+ * Description: This function checks if a charzcter
+ * is lower or upper
+ * Return: 0 if the charcter is 
