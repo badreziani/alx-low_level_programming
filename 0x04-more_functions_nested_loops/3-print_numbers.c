@@ -5,13 +5,13 @@
  * followed by a new line
  * Return: void
  */
-
 void print_numbers(void)
 {
-	char i;
-	for (i = '0'; i <= '9'; i++)
+	int a;
+
+	for (a = 48; a <= 57; a++)
 	{
-		_putchar(i);
+		_putchar(a);
 	}
 	_putchar('\n');
 }

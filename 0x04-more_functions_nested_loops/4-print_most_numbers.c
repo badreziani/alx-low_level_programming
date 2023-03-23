@@ -5,15 +5,19 @@
  * followed by a new line
  * Return: void
  */
-
 void print_most_numbers(void)
 {
-	char i;
-	
-	for (i = '0'; i <= '9'; i++)
+	int a;
+
+	for (a = 48; a <= 57; a++)
 	{
-		if (i != '2' && i != '4')
-			_putchar(i);
+		if (a != 50)
+		{
+			if (a != 52)
+			{
+				_putchar(a);
+			}
+		}
 	}
 	_putchar('\n');
 }
