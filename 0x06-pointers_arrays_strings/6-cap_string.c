@@ -7,8 +7,17 @@
  */
 char *cap_string(char *s)
 {
-	int i = 1;
+	int i = 0;
 
+	while (s[i] != '\0')
+	{
+		if (s[i] >= 65 && s[i] <= 90)
+			s[i] += 32;
+		i++;
+	}
+	if (s[0] >= 97 && s[0] <= 122)
+		s[0] -= 32;
+	i = 1;
 	while (s[i] != '\0')
 	{
 		if (s[i - 1] == ' ' || s[i - 1] == '\t' || s[i - 1] == '\n'
