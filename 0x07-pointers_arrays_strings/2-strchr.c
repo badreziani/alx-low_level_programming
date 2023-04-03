@@ -9,14 +9,16 @@
 char *_strchr(char *s, char c)
 {
 	unsigned int i = 0;
-	
+	char *f = NULL;
+
 	while (1)
 	{
 		if (*(s + i) == c)
 		{
-			return (s + i);
+			f = s + i;
+			break;
 		}
 		i++;
 	}
-	return (NULL);
+	return (f);
 }
