@@ -8,13 +8,17 @@
  */
 char *_strchr(char *s, char c)
 {
-	int i;
+	int i = 0;
 	char *l = 0; /* Located character */
 
-	for (i = 0; *(s + i) != '\0'; i++)
+	while (s[i] != '\0')
 	{
-		if (*(s + i) == c)
+		if (s[i] == c)
+		{
 			l = s + i;
+			break;
+		}
+		i++;
 	}
 	return (l);
 }
