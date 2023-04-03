@@ -1,5 +1,6 @@
 *.o
 *.out
 _putchar.c
+putchar.c
 main.c
 o.?
