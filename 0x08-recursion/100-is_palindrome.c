@@ -14,12 +14,10 @@ int is_palindrome_checker(char *s, int l, int r)
 	{
 		return (0);
 	}
-	if (l >= r)
+	if (l > r)
+		return (0);
+	if (s[l] == s[r] && (is_palindrome_checker(s, l + 1, r - 1)))
 		return (1);
-	if (s[l] == s[r])
-	{
-		return (is_palindrome_checker(s, l + 1, r - 1));
-	}
 	return (0);
 }
 
