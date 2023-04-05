@@ -1,21 +1,6 @@
 #include "main.h"
 
 /**
- * _strlen - computes the length ot a string
- * @s: pointer to char
- * Return: integer
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (s[len] != '\0')
-		len++;
-
-	return (len);
-}
-
-/**
  * is_palindrome_checker - checks if a string is palindrome
  * @s: pointer to char
  * @l: integer (left index)
@@ -46,6 +31,6 @@ int is_palindrome(char *s)
 {
 	int len;
 
-	len = _strlen(s);
+	len = _strlen_recursion(s);
 	return (is_palindrome_checker(s, 0, len - 1));
 }
