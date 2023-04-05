@@ -10,12 +10,12 @@
  */
 int is_palindrome_checker(char *s, int l, int r)
 {
-	if (s[l] != '\0' || l < 0 || r < 0)
+	if (s[l] == '\0')
 	{
-		return (0);
+		return (1);
 	}
-	if (l > r)
-		return (0);
+	if (l == r)
+		return (1);
 	if (s[l] == s[r] && (is_palindrome_checker(s, l + 1, r - 1)))
 		return (1);
 	return (0);
