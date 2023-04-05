@@ -26,5 +26,5 @@ int is_prime_checker(int n, int i)
  */
 int is_prime_number(int n)
 {
-	is_prime_checker(n, 2);
+	return is_prime_checker(n, 2);
 }
