@@ -8,6 +8,8 @@
  */
 int is_prime_checker(int n, int i)
 {
+	if (n <= 1)
+		return (0);
 	if (n % i == 0)
 	{
 		if (n == i)
