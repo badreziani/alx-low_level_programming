@@ -27,7 +27,8 @@ int main(int argc, char *argv[])
 		coins = cents / 25 +
 			(cents % 25) / 10 +
 			(cents % 10) / 5 +
-			cents % 5;
+			(cents % 5) / 2 +
+			cents % 2;
 	}
 	printf("%d\n", coins);
 	return (0);
