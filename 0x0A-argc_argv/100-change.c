@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	int cents, coins;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		printf("Error\n");
 		return (1);
@@ -24,21 +24,11 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		coins = 0;
-		while (cents > 0)
-		{
-			if (cents - 25 >= 0)
-				coins = coins - 25;
-			else if (coins - 10 >= 0)
-				coins = coins - 10;
-			else if (coins - 5 >= 0)
-				coins = coins - 5;
-			else if (coins - 2 >= 0)
-				coins = coins - 2;
-			else if (coins - 1 >= 0)
-				coins = coins - 1;
-			coins++;
-		}
+		coins = cents / 25 +
+			(cents % 25) / 10 +
+			(cents % 10) / 5 +
+			(cents % 5) / 2 +
+			cents % 2;
 	}
 	printf("%d\n", coins);
 	return (0);
