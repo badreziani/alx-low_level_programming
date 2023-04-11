@@ -28,9 +28,9 @@ char *str_concat(char *s1, char *s2)
 	char *concat;
 	unsigned int i, size, s_s1, s_s2;
 
-	if (s1 == NULL)
+	if (s1 == 0)
 		s1 = "";
-	if (s2 == NULL)
+	if (s2 == 0)
 		s2 = "";
 
 	s_s1 = _strlen(s1);
