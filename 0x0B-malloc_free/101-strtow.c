@@ -30,7 +30,7 @@ int count_words(char *str)
  */
 char **strtow(char *str)
 {
-	int cw, i, j, len;
+	int cw, i, len;
 	char **words, *word;
 
 	cw = count_words(str);
