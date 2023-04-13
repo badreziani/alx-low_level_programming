@@ -3,24 +3,25 @@
 
 /**
  * array_range - creates an array of integers
- * @min; integer
+ * @min: integer
  * @max: integer
  * Return: pointer to integer
  */
 int *array_range(int min, int max)
 {
-	int *arr, i, n;
+	int *arr, i, tmp;
 
 	if (min > max)
 		return (NULL);
-	arr = malloc((max - min + 1) * sizeof(int));
+	tmp = max - min;
+	arr = malloc((tmp + 1) * sizeof(*arr));
 	i = 0;
-	n = min;
-	while (n <= max)
+	tmp = min;
+	while (tmp <= max)
 	{
-		arr[i] = n;
+		arr[i] = tmp;
 		i++;
-		n++;
+		tmp++;
 	}
 	return (arr);
 }
