@@ -12,30 +12,27 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *new_s;
-	unsigned int x, y, i, j;
+	unsigned int a, b, c, d;
 
 	if (s1 == NULL)
 		*s1 = '\0';
-	if (s2 == 0)
+	if (s2 == NULL)
 		*s2 = '\0';
-
-	for (x = 0; s1[x] != '\0'; x++)
+	for (a = 0; s1[a] != '\0'; a++)
 		;
-	for (y = 0; s2[y] != '\0'; y++)
+	for (b = 0; s2[b] != '\0'; b++)
 		;
-	if (n > y)
-		new_s = malloc((x + y + 1) * sizeof(*new_s));
+	if (n > b)
+		new_s = malloc((a + b + 1) * sizeof(*new_s));
 	else
-		new_s = malloc((x + n + 1) * sizeof(*new_s));
-
-	if (new_s == NULL)
+		new_s = malloc((a + n + 1) * sizeof(*new_s));
+	if (new_s == 0)
 		return (NULL);
 
-	for (i = 0; i < x; i++)
-		new_s[i] = s1[i];
-	for (j = 0; j < n && j < y; i++, j++)
-		new_s[i] = s2[j];
-	new_s[i] = '\0';
-
+	for (c = 0; c < a; c++)
+		new_s[c] = s1[c];
+	for (d = 0; d < n && d < b; d++, c++)
+		new_s[c] = s2[d];
+	new_s[c] = '\0';
 	return (new_s);
 }
