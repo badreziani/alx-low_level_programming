@@ -22,9 +22,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (x = 0; s1[x] != '\0'; x++)
 		;
 	for (y = 0; s2[y] != '\0'; y++)
+	{
 		if (y == n)
 			break;
-	new_s = malloc(sizeof(*new_s) * (x + y + 1));
+	}
+	new_s = malloc(sizeof(char) * (x + y + 1));
 	if (new_s == NULL)
 		return (NULL);
 	for (x = 0; s1[x] != '\0'; x++)
