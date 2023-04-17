@@ -4,9 +4,9 @@
  * @age: floating number
  * @owner: pointer to char
  */
-struct dog
+typedef struct dog
 {
 	char *name;
 	float age;
 	char *owner;
-};
+} dog;
