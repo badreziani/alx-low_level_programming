@@ -32,6 +32,7 @@ void main(int argc, char *argv[])
 		printf("Error\n");
 		exit(100);
 	}
+	op = get_op_func(argv[2]);
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
 	result = op(num1, num2);
