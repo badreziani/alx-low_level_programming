@@ -1,15 +1,5 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include "function_pointers.h"
-
-/**
- * print_str - prints a string
- * @str: pointer to char
- * Return: nothing
- */
-void print_str(char *str)
-{
-	printf("%s", str);
-}
 
 /**
  * print_name - prints a name
@@ -19,5 +9,6 @@ void print_str(char *str)
  */
 void print_name(char *name, void (*f)(char *))
 {
-	f(name);
+	if (name != NULL && f != NULL)
+		f(name);
 }
