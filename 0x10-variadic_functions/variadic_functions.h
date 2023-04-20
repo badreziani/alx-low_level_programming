@@ -12,8 +12,8 @@ void print_all(const char * const format, ...);
  */
 typedef struct _format
 {
-        char c;
-	void (*f)(va_list);
+        char type;
+	void (*func)(va_list);
 } _format;
 
 void print_char(va_list l);
