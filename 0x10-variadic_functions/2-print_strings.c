@@ -19,10 +19,11 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	{
 		str = va_arg(p_list, char *);
 		if (str == NULL)
-			str = "(nil)";
-		printf("%s", str);
+			printf("(nil)");
+		else
+			printf("%s", str);
 		if (separator != NULL && i < n - 1)
-			printf(", ");
+			printf("%s", separator);
 	}
 	printf("\n");
 	va_end(p_list);
