@@ -18,15 +18,15 @@ int (*get_op_func(char *s))(int, int)
 		{"%", op_mod},
 		{NULL, NULL}
 	};
-	int a;
+	int i;
 
-	if (s[0] != '\0')
+	i = 0;
+	while (i < 5)
 	{
-		for (a = 0; a < 5; a++)
-		{
-			if (*(opts[a].op) == *s)
-				return (opts[a].f);
-		}
+		if (*(opts[i].op) == *s && s != NULL)
+			return (opts[i].f);
+		i++;
 	}
+
 	return (0);
 }
