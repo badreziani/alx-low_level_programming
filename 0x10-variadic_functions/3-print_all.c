@@ -53,36 +53,33 @@ void print_string(va_list l)
  */
 void print_all(const char * const format, ...)
 {
-	a_list p_list;
-	char *sep1, *sep2;
-	int i, j;
-	_format _f[] = {
-		{'c', print_char},
-		{'i', print_integer},
-		{'f', print_float},
-		{'s', print_string},
-		{'\0', NULL}
-	};
+	va_list args;
+	char *sep1 = "", *sep2 = ", ";
+	int count1 = 0, count2 = 0;
+	_format types[] = {
+        {'c', print_char},
+        {'i', print_int},
+        {'f', print_float},
+        {'s', print_string},
+        {'\0', NULL}
+        };
 
-	sep1 = "";
-	sep2 = ", ";
-	va_start(p_list, format);
-	i = 0;
-	while (format != NULL && format[i] != '\0')
+	va_start(args, format);
+	while (format !=  NULL && format[count1] != '\0')
 	{
-		j = 0;
-		while (_f[j].type != '\0')
+		count2 = 0;
+		while (types[count2].z != '\0')
 		{
-			if (format[i] == _f[j].type)
+			if (format[count1] == types[count2].z)
 			{
 				printf("%s", sep1);
-				_f[j].func(p_list);
+				types[count2].f(args);
 				sep1 = sep2;
 			}
-			j++;
+			count2++;
 		}
-		i++;
+		count1++;
 	}
 	printf("\n");
-	va_end(p_list);
+	va_end(args);
 }
