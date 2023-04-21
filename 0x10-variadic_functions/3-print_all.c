@@ -53,7 +53,7 @@ void print_string(va_list l)
  */
 void print_all(const char * const format, ...)
 {
-	va_list p_list;
+	a_list p_list;
 	char *sep1, *sep2;
 	int i, j;
 	_format _f[] = {
