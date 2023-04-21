@@ -1,68 +1,62 @@
-#include <stdarg.h>
+#include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include "variadic_functions.h"
-
+/**
+ * print_int - prints an int
+ * @args: the list of args
+ */
+void print_int(va_list args)
+{
+	printf("%d", va_arg(args, int));
+}
 /**
  * print_char - prints a char
- * @l: Pointer to first element in va_list
- * Return: Nothing
+ * @args: the list of args
  */
-void print_char(va_list l)
+void print_char(va_list args)
 {
-	printf("%c", va_arg(l, int));
+	printf("%c", va_arg(args, int));
 }
-
-/**
- * print_integer - prints an integer
- * @l: Pointer to first element in va_list
- * Return: Nothing
- */
-void print_integer(va_list l)
-{
-	printf("%d", va_arg(l, int));
-}
-/**
- * print_float - prints a float
- * @l: Pointer to first element in va_list
- * Return: Nothing
- */
-void print_float(va_list l)
-{
-	printf("%f", va_arg(l, double));
-}
-
 /**
  * print_string - prints a string
- * @l: Pointer to first element in va_list
- * Return: Nothing
+ * @args: the list of args
  */
-void print_string(va_list l)
+void print_string(va_list args)
 {
-	char *str;
+	char *z = va_arg(args, char *);
 
-	str = va_arg(l, char *);
-	if (str == NULL)
-		str = "(nil)";
-	printf("%s", str);
+	if (!z)
+	{
+		printf("(nil)");
+		return;
+	}
+	printf("%s", z);
 }
-
 /**
- * print_all - prints anything.
- * @format: List of types
- * Return: Nothing
+ * print_float - prints floats
+ * @args: the list of args
+ */
+void print_float(va_list args)
+{
+	printf("%f", va_arg(args, double));
+}
+/**
+ * print_all - prints all
+ * @format: formats of arg
  */
 void print_all(const char * const format, ...)
 {
+	types_t types[] = {
+	{'c', print_char},
+	{'i', print_int},
+	{'f', print_float},
+	{'s', print_string},
+	{'\0', NULL}
+	};
 	va_list args;
 	char *sep1 = "", *sep2 = ", ";
 	int count1 = 0, count2 = 0;
-	_format types[] = {
-        {'c', print_char},
-        {'i', print_int},
-        {'f', print_float},
-        {'s', print_string},
-        {'\0', NULL}
-        };
 
 	va_start(args, format);
 	while (format !=  NULL && format[count1] != '\0')
