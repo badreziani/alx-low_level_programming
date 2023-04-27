@@ -1,6 +1,4 @@
-#include <stdlib.h>
 #include "3-calc.h"
-#include "3-op_functions.c"
 
 /**
  * get_op_func - returns a pointer to the function
@@ -10,7 +8,7 @@
  */
 int (*get_op_func(char *s))(int, int)
 {
-	op_t opts[] = {
+	op_t ops[] = {
 		{"+", op_add},
 		{"-", op_sub},
 		{"*", op_mul},
@@ -18,15 +16,13 @@ int (*get_op_func(char *s))(int, int)
 		{"%", op_mod},
 		{NULL, NULL}
 	};
-	int i;
+	int i = 0;
 
-	i = 0;
 	while (i < 5)
 	{
-		if (*(opts[i].op) == *s && s != NULL)
-			return (opts[i].f);
+		if (*(ops[i].op) == *s && s[0] != '\0')
+			return (ops[i].f);
 		i++;
 	}
-
 	return (0);
 }
