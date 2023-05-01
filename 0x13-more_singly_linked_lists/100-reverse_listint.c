@@ -13,10 +13,9 @@ listint_t *reverse_listint(listint_t **head)
 		return (*head);
 
 	ptr1 = NULL;
-	while (*head != NULL)
+	while ((*head)->next != NULL)
 	{
 		ptr2 = (*head)->next;
-
 		(*head)->next = ptr1;
 		ptr1 = *head;
 		*head = ptr2;
