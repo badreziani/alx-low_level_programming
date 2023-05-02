@@ -7,13 +7,13 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *ptr;
+	const listint_t *ptr;
 	size_t len = 0;
 
 	ptr = head;
 	while (ptr != NULL)
 	{
-		printf("[%p] %d", head, head->n);
+		printf("[%p] %d", ptr, ptr->n);
 		ptr = ptr->next;
 		len++;
 	}
