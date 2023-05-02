@@ -7,15 +7,17 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *printed_node;
+	listint_t *ptr;
 	size_t len = 0;
-	while (head != NULL)
+
+	ptr = head;
+	while (ptr != NULL)
 	{
-		printed_node = head;
 		printf("[%p] %d", head, head->n);
+		ptr = ptr->next;
 		len++;
 	}
-	if(printed_node->next != NULL)
+	if(ptr->next != NULL)
 		exit(98);
 	return (len);
 }
