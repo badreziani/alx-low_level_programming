@@ -13,7 +13,7 @@ size_t print_listint_safe(const listint_t *head)
 	ptr = head;
 	while (ptr != NULL)
 	{
-		printf("[%p] %d", ptr, ptr->n);
+		printf("[%p] %d", (void *)ptr, ptr->n);
 		ptr = ptr->next;
 		len++;
 	}
