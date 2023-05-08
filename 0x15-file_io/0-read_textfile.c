@@ -1,7 +1,3 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -18,6 +14,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filename == NULL)
 		return (0);
+
 	buffer = malloc(letters);
 	if (buffer == NULL)
 		return (0);
@@ -28,13 +25,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(buffer);
 		return (0);
 	}
+
 	size = read(fd, buffer, letters);
 	num_letters = write(STDOUT_FILENO, buffer, size);
 	free(buffer);
 	close(fd);
+
 	if (num_letters != letters)
 	{
 		return (0);
 	}
+
 	return (num_letters);
 }
