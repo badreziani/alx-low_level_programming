@@ -23,8 +23,8 @@ int is_p(char *str, int len, int idx)
 int is_palindrome(char *s)
 {
 	int len;
-	
-	if (s == "")
+
+	if (*s == '\0')
 		return (1);
 	len = _strlen_recursion(s);
 	return (is_p(s, len / 2, len - 1));
