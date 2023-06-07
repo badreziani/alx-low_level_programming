@@ -8,8 +8,6 @@
  */
 int is_prime(int x, int y)
 {
-	if (x <= 1)
-		return (0);
 	if (x % y == 0)
 		return (0);
 	if (x == y)
@@ -24,5 +22,7 @@ int is_prime(int x, int y)
  */
 int is_prime_number(int n)
 {
+	if (n <= 1)
+		return (0);
 	return (is_prime(n, 1));
 }
