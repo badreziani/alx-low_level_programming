@@ -12,7 +12,7 @@ int is_p(char *str, int len, int idx)
 {
 	if (*str != *(str + idx))
 		return (0);
-	if (idx > len)
+	if (idx <= len)
 		return (1);
 	return (is_p(str + 1, len, idx - 1));
 }
