@@ -20,9 +20,9 @@ char *argstostr(int ac, char **av)
 	}
 	len += ac + 1;
 	argstr = malloc(sizeof(char) * len);
-	len = 0;
 	if (!argstr)
 		return (NULL);
+	len = 0;
 	for (idx1 = 0; idx1 < ac; idx1++)
 	{
 		for (idx2 = 0; av[idx1][idx2] != '\0'; idx2++)
@@ -30,7 +30,6 @@ char *argstostr(int ac, char **av)
 			argstr[len] = av[idx1][idx2];
 			len++;
 		}
-		len++;
 		argstr[len] = '\n';
 	}
 	return (argstr);
