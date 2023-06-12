@@ -10,7 +10,7 @@ char *argstostr(int ac, char **av)
 	char *argstr;
 	int idx1, idx2, len = 0;
 
-	if (ac == 0 || !av)
+	if (ac == 0 || av == NULL)
 		return (NULL);
 
 	for (idx1 = 0; idx1 < ac; idx1++)
@@ -25,8 +25,11 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	for (idx1 = 0; idx1 < ac; idx1++)
 	{
-		for (idx2 = 0; av[idx1][idx2]; idx2++)
-			argstr[len++] = av[idx1][idx2];
+		for (idx2 = 0; av[idx1][idx2] != '\0'; idx2++)
+		{
+			argstr[len] = av[idx1][idx2];
+			len++;
+		}
 		len++;
 		argstr[len] = '\n';
 	}
