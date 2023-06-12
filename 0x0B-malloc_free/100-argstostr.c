@@ -31,6 +31,7 @@ char *argstostr(int ac, char **av)
 			len++;
 		}
 		argstr[len] = '\n';
+		len++;
 	}
 	return (argstr);
 
