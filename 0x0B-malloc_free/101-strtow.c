@@ -25,6 +25,20 @@ int count_words(char *str)
 	}
 	return (w_count);
 }
+
+/**
+ * empty_str - cheks if str is null or empty
+ * @str: the sytring to check
+ * Return: 1 if str is null or empty, 0 if not
+ */
+int empty_str(char *str)
+{
+	if (str == NULL || str[0] == '\0')
+		return (1);
+	if (count_words(str) == 0)
+		return (1);
+	return (0);
+}
 /**
  * strtow - splits a string into words
  * @str: the string to split
@@ -33,21 +47,16 @@ int count_words(char *str)
 char **strtow(char *str)
 {
 	char **words;
-	int c, test = 0, i = 0, j, k, w_len;
+	int c = 0, test = 0, i = 0, j, k, w_len;
 
-	if (str == NULL || str[0] == '\0')
+	if (empty_str(str) == 1)
 		return (NULL);
-	c = count_words(str) + 1;
-	if (c == 1)
-		return (NULL);
-	words = malloc(sizeof(char *) * c);
+	words = malloc(sizeof(char *) * (1 + count_words(str)));
 	if (!words)
 		return (NULL);
-	c = 0;
 	while (str[i] != '\0')
 	{
-		w_len = 0;
-		j = i;
+		w_len = 0, j = i;
 		while (str[j] != ' ' && str[j] != '\0')
 		{
 			j++;
@@ -56,29 +65,20 @@ char **strtow(char *str)
 		}
 		if (test == 1)
 		{
-			w_len++;
-			words[c] = malloc(sizeof(char) * w_len);
+			words[c] = malloc(sizeof(char) * (1 + w_len));
 			if (!words[c])
 			{
 				c--;
 				while (c >= 0)
-				{
-					free(words[c]);
-					c--;
-				}
+					free(words[c--]);
 				free(words);
 				return (NULL);
 			}
 			j = i;
 			k = 0;
 			while (str[j] != ' ' && str[j] != '\0')
-			{
-				words[c][k] = str[j];
-				k++;
-				j++;
-			}
-			words[c][k] = '\0';
-			c++;
+				words[c][k++] = str[j++];
+			words[c++][k] = '\0';
 			i = j - 1;
 			test = 0;
 		}
