@@ -10,7 +10,7 @@ unsigned int _strlen(char *s)
 
 	if (s)
 		while (s[len] != '\0')
-			s++;
+			len++;
 	return (len);
 }
 
@@ -35,12 +35,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	str = malloc(l);
 	if (!str)
 		return (NULL);
-	for (x = 0, y = l1; s1[x] != '\0'; x++)
+	for (x = 0, y = 0; x < l - 1; x++)
 	{
 		if (x >= l1)
 			str[x] = s2[y++];
 		else
 			str[x] = s1[x];
 	}
+	str[x] = '\0';
 	return (str);
 }
