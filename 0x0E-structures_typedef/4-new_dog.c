@@ -1,42 +1,5 @@
 #include <stdlib.h>
 #include "dog.h"
-
-/**
- * _strlen - calculate the lenght of a string
- * @s: the string
- * Return: the lenghth of s
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	if (!s)
-		return (0);
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
-/**
- * duplicate - duplicate a string
- * @s: the string to duplicate
- * Return: a copy of the original string
- */
-char *duplicate(char *s)
-{
-	int len;
-	char *copy;
-
-	len = _strlen(s);
-	if (len == 0)
-		return (NULL);
-	copy = malloc(sizeof(char) * (len + 1));
-	if (!copy)
-		return (NULL);
-	for (len = 0; s[len] != '\0'; len++)
-		copy[len] = s[len];
-	copy[len] = '\0';
-	return (copy);
-}
 /**
  * new_dog - creates a new dog
  * @name: the dog name
@@ -46,26 +9,41 @@ char *duplicate(char *s)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
-	int len;
+	int ni, oi;
+	dog_t *dog;
 
-	new_dog = malloc(sizeof(*new_dog));
-	if (!new_dog)
-		return (NULL);
-
-	new_dog->name = duplicate(name);
-	if (!new_dog->name)
+	ni = oi = 0;
+	while (name[ni++] != '\0')
+		;
+	while (owner[oi++] != '\0')
+		;
+	dog = malloc(sizeof(*dog));
+	if (dog == NULL)
 	{
-		free(new_dog);
+		free(dog);
 		return (NULL);
 	}
-	new_dog->age = age;
-	new_dog->owner = duplicate(owner);
-	if (!new_dog->owner)
+	dog->name = malloc(ni * sizeof(dog->name));
+	if (dog->name == NULL)
 	{
-		free(new_dog->name);
-		free(new_dog);
+		free(dog->name);
+		free(dog);
 		return (NULL);
 	}
-	return (new_dog);
+	dog->owner = malloc(oi * sizeof(dog->owner));
+	if (dog->owner == NULL)
+	{
+		free(dog->name);
+		free(dog->owner);
+		free(dog);
+		return (NULL);
+	}
+	for (ni = 0; name[ni] != '\0'; ni++)
+		dog->name[ni] = name[ni];
+	dog->name[ni] = name[ni];
+	dog->age = age;
+	for (oi = 0; owner[oi] != '\0'; oi++)
+		dog->owner[oi] = owner[oi];
+	dog->owner[oi] = owner[oi];
+	return (dog);
 }
