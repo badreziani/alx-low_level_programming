@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "_strlen.c"
 /**
  * append_text_to_file - appends text at the end of a file
  * @filename: the name of the file
