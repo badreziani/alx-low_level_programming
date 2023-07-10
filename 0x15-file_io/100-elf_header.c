@@ -8,7 +8,12 @@
  * in the ELF header at the start of an ELF file
  * Return: 0
  */
-int main(int __attribute__((__unused__)) argc, char __attribute__((__unused__)) *argv[])
+int main(int argc, char __attribute__((__unused__)) *argv[])
 {
+	if (argc < 2)
+	{
+		dprintf(STDERR_FILENO, "Error: You didn't specify the file.\n");
+		exit(98);
+	}
 	return (0);
 }
