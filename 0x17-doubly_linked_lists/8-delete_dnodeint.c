@@ -23,16 +23,16 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		free(node);
 		return (1);
 	}
-	while (node)
+	while (node && c <= index)
 	{
-		if (c == index)
-		{
-			node->prev->next = node->next;
-			node->next->prev = node->prev;
-			free(node);
-			return (1);
-		}
 		node = node->next;
+		c++;
 	}
-	return (-1);
+	if (!node)
+		return (-1);
+	node->prev->next = node->next;
+	if (node->next)
+		node->next->prev = node->prev;
+	free(node);
+	return (1);
 }
