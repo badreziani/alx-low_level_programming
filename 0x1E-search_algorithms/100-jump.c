@@ -52,8 +52,6 @@ int jump_search(int *array, size_t size, int value)
 		if (value < array[i + b])
 			break;
 	}
-	if 
-	l = i;
 	while (i < l + b)
 	{
 		i++;
@@ -65,5 +63,9 @@ int jump_search(int *array, size_t size, int value)
 			return (i);
 		}
 	}
+	l = i;
+	printf("Value found between indexes [%lu] and [%lu]\n",
+			size - 1, size - 1 + b);
+	print_range(array, size - 1, size - 1);
 	return (-1);
 }
