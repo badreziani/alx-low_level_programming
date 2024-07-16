@@ -16,7 +16,7 @@ void print_array(int *array, size_t left, size_t right)
 		if (i == right)
 			printf("%d\n", array[i]);
 		else
-			printf("%d ", array[i]);
+			printf("%d, ", array[i]);
 	}
 }
 /**
