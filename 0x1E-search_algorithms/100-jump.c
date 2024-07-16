@@ -1,6 +1,22 @@
 #include "search_algos.h"
 #include <math.h>
 /**
+ * print_range - prints elements of array of ints
+ * @array: the array to print
+ * @l: low index
+ * @h: hight index
+ * Return: nothing
+ */
+void print_range(int *array, size_t l, size_t h)
+{
+	size_t i;
+
+	for (i = l; i <= h; i++)
+	{
+		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
+	}
+}
+/**
  * jump_search - searches for a value in a sorted array
  * of integers using the Jump search algorithm
  * @array: the array to search in
@@ -10,80 +26,43 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t l, h, b, i;
+	size_t l, b, i;
 
 	if (!array || size == 0)
 		return (-1);
 	l = 0;
 	b = (size_t)sqrt(size);
-	h = b;
-	while (h < size)
+	for (i = 0; i < size; i += b)
 	{
-		if (array[l] == value)
+		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
+		if (value == array[i])
 		{
-			printf("Value found between indexes [%lu] and [%lu]\n", l, h);
-			i = l;
-			while (1)
-			{
-				printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-				if (array[i] == value)
-					break;
-				i++;
-			}
-			return (l);
+			printf("Value found between indexes [%lu] and [%lu]\n",
+					i, i + b);
+			print_range(array, i, i + b);
+			return (i);
 		}
-		else if (array[h] == value)
+		else if (i + b < size && value == array[i + b])
 		{
-			printf("Value found between indexes [%lu] and [%lu]\n", l, h);
-			i = l;
-			while (1)
-			{
-				printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-				if (array[i] == value)
-					break;
-				i++;
-			}
-			return (h);
+			printf("Value found between indexes [%lu] and [%lu]\n",
+					i, i + b);
+			print_range(array, i, i + b);
+			return (i + b);
 		}
-		else if (value < array[h])
-		{
-			printf("Value found between indexes [%lu] and [%lu]\n", l, h);
-			i = l;
-			while(1)
-			{
-				printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-				if (array[i] == value)
-					return (i);
-				if (i == h)
-					break;
-				i++;
-			}
-			return (-1);
-		}
-		else
-		{
-			printf("Value checked array[%lu] = [%d]\n", l, array[l]);
-			printf("Value checked array[%lu] = [%d]\n", h, array[h]);
-		}
-		l = h;
-		h += b;
+		if (value < array[i + b])
+			break;
 	}
-
-	for (i = l; i < size; i++)
+	if 
+	l = i;
+	while (i < l + b)
 	{
-		printf("Value checked array[%lu] = [%d]", i, array[i]);
-		if (array[i] == value)
+		i++;
+		if (value == array[i])
 		{
-			printf("Value found between indexes [%lu] and [%lu]", l, h);
-			i = l;
-			while (1)
-			{
-				printf("Value checked array[%lu] = [%d]", i, array[i]);
-				if (array[i] == value)
-					break;
-				i++;
-			}
-			return (h);
+			printf("Value found between indexes [%lu] and [%lu]\n",
+					l, l + b);
+			print_range(array, l, i);
+			return (i);
 		}
 	}
 	return (-1);
