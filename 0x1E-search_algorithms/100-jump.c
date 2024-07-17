@@ -17,6 +17,17 @@ void print_range(int *array, size_t l, size_t h)
 	}
 }
 /**
+ * print_found - prints the found instruction
+ * @l: low index
+ * @h: hight index
+ * Return: Nothing
+ */
+void print_found(size_t l, size_t h)
+{
+
+	printf("Value found between indexes [%lu] and [%lu]\n", l, h);
+}
+/**
  * jump_search - searches for a value in a sorted array
  * of integers using the Jump search algorithm
  * @array: the array to search in
@@ -28,7 +39,7 @@ int jump_search(int *array, size_t size, int value)
 {
 	size_t l, b, i;
 
-	if (!array || size == 0)
+	if (!array || !array[0] || size == 0)
 		return (-1);
 	l = 0;
 	b = (size_t)sqrt(size);
@@ -37,15 +48,13 @@ int jump_search(int *array, size_t size, int value)
 		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
 		if (value == array[i])
 		{
-			printf("Value found between indexes [%lu] and [%lu]\n",
-					i, i + b);
+			print_found(i, i + b);
 			print_range(array, i, i + b);
 			return (i);
 		}
 		else if (i + b < size && value == array[i + b])
 		{
-			printf("Value found between indexes [%lu] and [%lu]\n",
-					i, i + b);
+			print_found(i, i + b);
 			print_range(array, i, i + b);
 			return (i + b);
 		}
@@ -57,15 +66,11 @@ int jump_search(int *array, size_t size, int value)
 		i++;
 		if (value == array[i])
 		{
-			printf("Value found between indexes [%lu] and [%lu]\n",
-					l, l + b);
 			print_range(array, l, i);
 			return (i);
 		}
 	}
-	l = i;
-	printf("Value found between indexes [%lu] and [%lu]\n",
-			size - 1, size - 1 + b);
+	print_found(size - 1, size - 1 + b);
 	print_range(array, size - 1, size - 1);
 	return (-1);
 }
