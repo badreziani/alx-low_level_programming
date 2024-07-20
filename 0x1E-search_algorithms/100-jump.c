@@ -1,32 +1,6 @@
 #include "search_algos.h"
 #include <math.h>
-/**
- * print_range - prints elements of array of ints
- * @array: the array to print
- * @l: low index
- * @h: hight index
- * Return: nothing
- */
-void print_range(int *array, size_t l, size_t h)
-{
-	size_t i;
 
-	for (i = l; i <= h; i++)
-	{
-		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-	}
-}
-/**
- * print_found - prints the found instruction
- * @l: low index
- * @h: hight index
- * Return: Nothing
- */
-void print_found(size_t l, size_t h)
-{
-
-	printf("Value found between indexes [%lu] and [%lu]\n", l, h);
-}
 /**
  * jump_search - searches for a value in a sorted array
  * of integers using the Jump search algorithm
@@ -37,40 +11,30 @@ void print_found(size_t l, size_t h)
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t l, b, i;
+	size_t low, high, step;
 
-	if (!array || !array[0] || size == 0)
+	if (!array || size == 0)
 		return (-1);
-	l = 0;
-	b = (size_t)sqrt(size);
-	for (i = 0; i < size; i += b)
+	low = 0;
+	high = step = (size_t) sqrt(size);
+	printf("Value checked array[%lu] = [%d]\n", low, array[low]);
+	while (high < size && value > array[high])
 	{
-		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
-		if (value == array[i])
-		{
-			print_found(i, i + b);
-			print_range(array, i, i + b);
-			return (i);
-		}
-		else if (i + b < size && value == array[i + b])
-		{
-			print_found(i, i + b);
-			print_range(array, i, i + b);
-			return (i + b);
-		}
-		if (value < array[i + b])
-			break;
+		printf("Value checked array[%lu] = [%d]\n", high, array[high]);
+		low = high;
+		high += step;
 	}
-	while (i < l + b)
+	printf("Value found between indexes [%lu] and [%lu]\n", low, high);
+	step = 0;
+	while (low + step <= high)
 	{
-		i++;
-		if (value == array[i])
-		{
-			print_range(array, l, i);
-			return (i);
-		}
+		printf("Value checked array[%lu] = [%d]\n",
+				low + step, array[low + step]);
+		if (value == array[low + step])
+			return (low + step);
+		step++;
+		if (low + step >= size)
+			return (-1);
 	}
-	print_found(size - 1, size - 1 + b);
-	print_range(array, size - 1, size - 1);
 	return (-1);
 }
