@@ -1,5 +1,0 @@
-sudo ufw app list
-sudo ufw status
-sudo ufw allow 'OpenSSH'
-sudo ufw allow 'Nginx HTTPS'
-sudo ufw allow 'Nginx HTTP'
